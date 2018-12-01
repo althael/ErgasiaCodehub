@@ -1,8 +1,8 @@
 package DiaxeirishAsfaleiwn;
 
 public class Owner {
-   private int id;
-   private int ssn;
+    private int id;
+    private int ssn;
 
     public Owner(int id, int ssn, String name, String surname) {
         this.id = id;

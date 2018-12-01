@@ -3,10 +3,10 @@ package DiaxeirishAsfaleiwn;
 import java.util.Date;
 
 public class Insurance {
-boolean statusi ;
-Date date_start;
-Date date_end;
-int id;
+    boolean statusi;
+    Date date_start;
+    Date date_end;
+    int id;
 
     public Insurance(boolean statusi, Date date_start, Date date_end, int id) {
         this.statusi = statusi;
