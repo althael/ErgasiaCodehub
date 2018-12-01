@@ -10,26 +10,10 @@ import java.util.Scanner;
 
 public class Ergasia1 {
 
+
     public static void main(String[] args) {
 
 
-        try {
-            String url = "jdbc:mysql://localhost:3306/myfinaldb?verifyServerCertificate=true&useSSL=false";
-            Connection conn = DriverManager.getConnection(url, "root", "exoilara21");
-            Statement stmt = conn.createStatement();
-            ResultSet rs;
-
-            rs = stmt.executeQuery("SELECT * FROM Vehicles ");
-            while (rs.next()) {
-                String lastName = rs.getString("number_plate");
-                System.out.println(lastName);
-            }
-            conn.close();
-        } catch (
-                Exception e) {
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-        }
         int choice = 0;
         boolean run = true;
         String s = "";
@@ -55,6 +39,8 @@ public class Ergasia1 {
             case 1:
                 // choosetype();
                 printStatus();
+
+
                 break;
             case 2:
                 // choosetype();
@@ -79,6 +65,34 @@ public class Ergasia1 {
 
     public static void printStatus() {
         String plate = readplate();
+
+        try {
+            String url = "jdbc:mysql://localhost:3306/myfinaldb?verifyServerCertificate=true&useSSL=false";
+            Connection conn = DriverManager.getConnection(url, "root", "exoilara21");
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+
+            rs = stmt.executeQuery("SELECT * FROM Vehicles   ");
+
+            while (rs.next()) {
+
+
+                String queryLicencePlates = rs.getString("number_plate");
+                if (queryLicencePlates.equals(plate)) {
+
+                    System.out.println("Your  vehicle exists in database");
+
+
+                }
+            }
+            System.out.println("Your vehicle does not exist in database");
+            conn.close();
+        } catch (
+                Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
         //to do the rest print status !!!!!!!!!!!
     }
 
@@ -164,3 +178,4 @@ public class Ergasia1 {
     }
 
 }
+
